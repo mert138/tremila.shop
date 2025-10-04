@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tremila.shop | Premium 3D Modeller ve Dijital Varlıklar</title>
+    <title>Tremila.shop | 3D Baskı Ürünler ve Modeller</title>
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -276,10 +276,16 @@
             position: relative;
         }
         
-        model-viewer {
+        .model-placeholder {
             width: 100%;
             height: 100%;
-            background-color: #f8faff;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
         }
         
         /* Features Section */
@@ -427,6 +433,15 @@
             background: #f0f4ff;
             position: relative;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .product-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
         }
         
         .product-info {
@@ -456,60 +471,6 @@
             align-items: center;
             color: var(--accent);
             font-size: 14px;
-        }
-        
-        /* Testimonials */
-        .testimonials {
-            padding: 100px 0;
-            background: white;
-        }
-        
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .testimonial-card {
-            background: var(--light);
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
-        }
-        
-        .testimonial-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        
-        .testimonial-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 24px;
-            margin-right: 15px;
-        }
-        
-        .testimonial-info h4 {
-            margin-bottom: 5px;
-        }
-        
-        .testimonial-info p {
-            color: var(--gray);
-            font-size: 14px;
-        }
-        
-        .testimonial-text {
-            color: var(--dark);
-            font-style: italic;
-            line-height: 1.7;
         }
         
         /* CTA Section */
@@ -642,6 +603,27 @@
             font-size: 14px;
         }
         
+        /* Page Content Styles */
+        .page-content {
+            padding: 100px 0;
+            min-height: 60vh;
+        }
+        
+        .page-title {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--dark);
+            text-align: center;
+        }
+        
+        .page-subtitle {
+            font-size: 20px;
+            color: var(--gray);
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+        
         /* Responsive */
         @media (max-width: 992px) {
             .hero-content {
@@ -698,6 +680,10 @@
                 flex-wrap: wrap;
                 justify-content: center;
             }
+            
+            .page-title {
+                font-size: 36px;
+            }
         }
         
         /* Animation */
@@ -716,22 +702,22 @@
     <header>
         <div class="container">
             <nav class="navbar">
-                <a href="#" class="logo">
+                <a href="main.html" class="logo">
                     <div class="logo-icon">T</div>
                     <div class="logo-text">Tremila<span>.shop</span></div>
                 </a>
                 
                 <ul class="nav-links">
-                    <li><a href="#"><i class="fas fa-home"></i> Ana Sayfa</a></li>
-                    <li><a href="#"><i class="fas fa-cube"></i> Modeller</a></li>
-                    <li><a href="#"><i class="fas fa-th-large"></i> Kategoriler</a></li>
-                    <li><a href="#"><i class="fas fa-fire"></i> Popüler</a></li>
-                    <li><a href="#"><i class="fas fa-info-circle"></i> Hakkımızda</a></li>
+                    <li><a href="main.html"><i class="fas fa-home"></i> Ana Sayfa</a></li>
+                    <li><a href="modeller.html"><i class="fas fa-cube"></i> Modeller</a></li>
+                    <li><a href="kategoriler.html"><i class="fas fa-th-large"></i> Kategoriler</a></li>
+                    <li><a href="populer.html"><i class="fas fa-fire"></i> Popüler</a></li>
+                    <li><a href="hakkimizda.html"><i class="fas fa-info-circle"></i> Hakkımızda</a></li>
                 </ul>
                 
                 <div class="nav-buttons">
-                    <a href="#" class="btn btn-outline"><i class="fas fa-sign-in-alt"></i> Giriş Yap</a>
-                    <a href="#" class="btn btn-primary"><i class="fas fa-user-plus"></i> Kayıt Ol</a>
+                    <a href="giris.html" class="btn btn-outline"><i class="fas fa-sign-in-alt"></i> Giriş Yap</a>
+                    <a href="kayit.html" class="btn btn-primary"><i class="fas fa-user-plus"></i> Kayıt Ol</a>
                 </div>
             </nav>
         </div>
@@ -743,20 +729,20 @@
             <div class="hero-content">
                 <div class="hero-text fade-in">
                     <div class="hero-badge">
-                        <i class="fas fa-rocket"></i> 3000+ Premium 3D Model
+                        <i class="fas fa-rocket"></i> 3000+ 3D Baskı Ürün
                     </div>
-                    <h1>Dijital Projeleriniz İçin <span>Premium 3D Modeller</span></h1>
-                    <p>Tremila.shop'ta oyun geliştiricileri, tasarımcılar ve sanatçılar için özenle hazırlanmış yüksek kaliteli 3D modelleri keşfedin. Hızlı indirme ve kolay entegrasyon.</p>
+                    <h1>Hayal Ettiğin <span>3D Baskı Ürünler</span> Burada</h1>
+                    <p>Tremila.shop'ta özel tasarım 3D baskı ürünlerini keşfedin. Kişiselleştirilmiş hediyeler, dekorasyon ürünleri ve daha fazlası için doğru adres!</p>
                     
                     <div class="hero-buttons">
-                        <a href="#" class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Hemen Keşfet</a>
-                        <a href="#" class="btn btn-outline"><i class="fas fa-play-circle"></i> Tanıtım Videosu</a>
+                        <a href="modeller.html" class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Hemen Keşfet</a>
+                        <a href="kategoriler.html" class="btn btn-outline"><i class="fas fa-th-large"></i> Kategoriler</a>
                     </div>
                     
                     <div class="hero-stats">
                         <div class="stat">
                             <div class="stat-value">3.000+</div>
-                            <div class="stat-label">Premium Model</div>
+                            <div class="stat-label">Ürün Çeşidi</div>
                         </div>
                         <div class="stat">
                             <div class="stat-value">15K+</div>
@@ -764,20 +750,14 @@
                         </div>
                         <div class="stat">
                             <div class="stat-value">4.9/5</div>
-                            <div class="stat-label">Kullanıcı Puanı</div>
+                            <div class="stat-label">Müşteri Puanı</div>
                         </div>
                     </div>
                 </div>
                 <div class="hero-model fade-in">
-                    <model-viewer 
-                        src="https://modelviewer.dev/shared-assets/models/Astronaut.glb" 
-                        alt="3D Astronot modeli"
-                        auto-rotate 
-                        camera-controls
-                        shadow-intensity="1"
-                        ar
-                        ar-modes="webxr scene-viewer quick-look">
-                    </model-viewer>
+                    <div class="model-placeholder">
+                        3D Baskı Ürünler
+                    </div>
                 </div>
             </div>
         </div>
@@ -788,32 +768,32 @@
         <div class="container">
             <div class="section-title fade-in">
                 <h2>Tremila.shop Avantajları</h2>
-                <p>Neden binlerce tasarımcı ve geliştirici Tremila.shop'u tercih ediyor?</p>
+                <p>Neden binlerce müşteri Tremila.shop'u tercih ediyor?</p>
             </div>
             
             <div class="features-grid">
                 <div class="feature-card fade-in">
                     <div class="feature-icon">
-                        <i class="fas fa-gem"></i>
+                        <i class="fas fa-print"></i>
                     </div>
-                    <h3>Premium Kalite</h3>
-                    <p>Tüm modellerimiz profesyonel tasarımcılar tarafından optimize edilmiş, yüksek poligon sayılı ve detaylıdır.</p>
+                    <h3>Yüksek Kaliteli Baskı</h3>
+                    <p>Tüm ürünlerimiz profesyonel 3D yazıcılarla yüksek çözünürlükte basılmıştır.</p>
                 </div>
                 
                 <div class="feature-card fade-in">
                     <div class="feature-icon">
-                        <i class="fas fa-bolt"></i>
+                        <i class="fas fa-shipping-fast"></i>
                     </div>
-                    <h3>Hızlı İndirme</h3>
-                    <p>Satın alma işleminden sonra modellere anında erişim sağlayın. Hızlı sunucularımız ile bekleme yok.</p>
+                    <h3>Hızlı Teslimat</h3>
+                    <p>Siparişleriniz aynı gün kargoya verilir, 2-4 iş günü içinde kapınızda.</p>
                 </div>
                 
                 <div class="feature-card fade-in">
                     <div class="feature-icon">
                         <i class="fas fa-palette"></i>
                     </div>
-                    <h3>Çok Formatlı</h3>
-                    <p>Modeller farklı yazılımlarla uyumlu çeşitli formatlarda sunulur (FBX, OBJ, BLEND, ve daha fazlası).</p>
+                    <h3>Çok Çeşitli Renkler</h3>
+                    <p>20'den fazla filament rengi seçeneği ile ürünlerinizi kişiselleştirin.</p>
                 </div>
                 
                 <div class="feature-card fade-in">
@@ -832,38 +812,31 @@
         <div class="container">
             <div class="section-header fade-in">
                 <div class="section-title" style="text-align: left; margin-bottom: 0;">
-                    <h2>Popüler 3D Modeller</h2>
-                    <p>En çok satan ve en beğenilen modellerimizi keşfedin</p>
+                    <h2>Popüler 3D Baskı Ürünler</h2>
+                    <p>En çok satan ve en beğenilen ürünlerimizi keşfedin</p>
                 </div>
-                <a href="#" class="btn btn-outline">Tümünü Gör <i class="fas fa-arrow-right"></i></a>
+                <a href="populer.html" class="btn btn-outline">Tümünü Gör <i class="fas fa-arrow-right"></i></a>
             </div>
             
             <div class="categories fade-in">
                 <button class="category-btn active">Tümü</button>
-                <button class="category-btn">Karakterler</button>
-                <button class="category-btn">Araçlar</button>
-                <button class="category-btn">Mimari</button>
-                <button class="category-btn">Eşyalar</button>
-                <button class="category-btn">Doğa</button>
-                <button class="category-btn">Teknoloji</button>
+                <button class="category-btn">Hediyelik</button>
+                <button class="category-btn">Dekorasyon</button>
+                <button class="category-btn">Aksesuar</button>
+                <button class="category-btn">Ofis</button>
+                <button class="category-btn">Figürin</button>
+                <button class="category-btn">Pratik Ürünler</button>
             </div>
             
             <div class="products-grid">
                 <div class="product-card fade-in">
                     <div class="product-badge">Popüler</div>
                     <div class="product-image">
-                        <model-viewer 
-                            src="https://modelviewer.dev/shared-assets/models/NeilArmstrong.glb" 
-                            alt="Astronot modeli"
-                            auto-rotate 
-                            camera-controls
-                            camera-orbit="0deg 75deg"
-                            shadow-intensity="1">
-                        </model-viewer>
+                        <img src="https://via.placeholder.com/300x200/4A6CF7/FFFFFF?text=3D+Baskı+Hediye" alt="3D Baskı Hediye">
                     </div>
                     <div class="product-info">
-                        <h3>Premium Astronot Karakter</h3>
-                        <p>Detaylı astronot karakter modeli, oyun ve animasyon projeleri için ideal.</p>
+                        <h3>Kişiselleştirilmiş Hediye Kutusu</h3>
+                        <p>Özel tasarım kişiselleştirilmiş 3D baskı hediye kutusu.</p>
                         <div class="product-meta">
                             <div class="price">₺149.99</div>
                             <div class="rating">
@@ -876,21 +849,15 @@
                 <div class="product-card fade-in">
                     <div class="product-badge">Yeni</div>
                     <div class="product-image">
-                        <model-viewer 
-                            src="https://modelviewer.dev/shared-assets/models/RobotExpressive.glb" 
-                            alt="Robot modeli"
-                            auto-rotate 
-                            camera-controls
-                            shadow-intensity="1">
-                        </model-viewer>
+                        <img src="https://via.placeholder.com/300x200/6C4AF7/FFFFFF?text=3D+Baskı+Dekor" alt="3D Baskı Dekor">
                     </div>
                     <div class="product-info">
-                        <h3>Ekspresif Robot Modeli</h3>
-                        <p>Animasyonlu robot modeli, yüz ifadeleri ve hareket kontrolleri ile birlikte.</p>
+                        <h3>Geometik Duvar Dekoru</h3>
+                        <p>Modern geometrik desenli 3D baskı duvar dekorasyonu.</p>
                         <div class="product-meta">
-                            <div class="price">₺199.99</div>
+                            <div class="price">₺89.99</div>
                             <div class="rating">
-                                <i class="fas fa-star"></i> 4.8
+                                <i class="fas fa-star"></i> 4.7
                             </div>
                         </div>
                     </div>
@@ -898,74 +865,17 @@
                 
                 <div class="product-card fade-in">
                     <div class="product-image">
-                        <model-viewer 
-                            src="https://modelviewer.dev/shared-assets/models/SheenChair.glb" 
-                            alt="Sandalyе modeli"
-                            auto-rotate 
-                            camera-controls
-                            shadow-intensity="1">
-                        </model-viewer>
+                        <img src="https://via.placeholder.com/300x200/F7A100/FFFFFF?text=3D+Baskı+Aksesuar" alt="3D Baskı Aksesuar">
                     </div>
                     <div class="product-info">
-                        <h3>Modern Sandalye Koleksiyonu</h3>
-                        <p>Mimari görselleştirmeler için yüksek detaylı modern sandalye modeli.</p>
+                        <h3>Akıllı Telefon Desteği</h3>
+                        <p>Ergonomik tasarımlı 3D baskı akıllı telefon desteği.</p>
                         <div class="product-meta">
-                            <div class="price">₺79.99</div>
+                            <div class="price">₺49.99</div>
                             <div class="rating">
-                                <i class="fas fa-star"></i> 4.7
+                                <i class="fas fa-star"></i> 4.8
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials">
-        <div class="container">
-            <div class="section-title fade-in">
-                <h2>Müşterilerimiz Ne Diyor?</h2>
-                <p>Tremila.shop'tan alışveriş yapan binlerce mutlu müşteriye katılın</p>
-            </div>
-            
-            <div class="testimonials-grid">
-                <div class="testimonial-card fade-in">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">A</div>
-                        <div class="testimonial-info">
-                            <h4>Ahmet Yılmaz</h4>
-                            <p>Oyun Geliştirici</p>
-                        </div>
-                    </div>
-                    <div class="testimonial-text">
-                        "Tremila.shop'tan aldığım karakter modelleri ile oyunumun geliştirme süreci çok hızlandı. Kalite ve fiyat dengesi mükemmel!"
-                    </div>
-                </div>
-                
-                <div class="testimonial-card fade-in">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">E</div>
-                        <div class="testimonial-info">
-                            <h4>Elif Demir</h4>
-                            <p>3D Sanatçı</p>
-                        </div>
-                    </div>
-                    <div class="testimonial-text">
-                        "Mimari projelerim için ihtiyaç duyduğum tüm modelleri bulabildiğim tek platform. Kalite ve çeşitlilik açısından rakipsiz."
-                    </div>
-                </div>
-                
-                <div class="testimonial-card fade-in">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">M</div>
-                        <div class="testimonial-info">
-                            <h4>Mehmet Kaya</h4>
-                            <p>Animasyon Stüdyosu</p>
-                        </div>
-                    </div>
-                    <div class="testimonial-text">
-                        "Profesyonel animasyon projelerimiz için sürekli Tremila.shop'tan alışveriş yapıyoruz. Müşteri desteği ve ürün kalitesi harika."
                     </div>
                 </div>
             </div>
@@ -975,11 +885,11 @@
     <!-- CTA Section -->
     <section class="cta fade-in">
         <div class="container">
-            <h2>3D Model Dünyasına Katılın</h2>
-            <p>Binlerce premium 3D model, texture ve materyale erişim sağlayın. Profesyonel projeleriniz için ihtiyacınız olan her şey Tremila.shop'ta!</p>
+            <h2>3D Baskı Dünyasına Katılın</h2>
+            <p>Binlerce özel tasarım 3D baskı ürünü keşfedin. Kişiselleştirilmiş hediyeler, dekorasyon ürünleri ve daha fazlası için Tremila.shop'ta!</p>
             <div class="cta-buttons">
-                <a href="#" class="btn btn-light"><i class="fas fa-crown"></i> Premium Üye Ol</a>
-                <a href="#" class="btn btn-outline" style="color: white; border-color: white;"><i class="fas fa-search"></i> Modelleri Keşfet</a>
+                <a href="kayit.html" class="btn btn-light"><i class="fas fa-crown"></i> Hemen Kayıt Ol</a>
+                <a href="modeller.html" class="btn btn-outline" style="color: white; border-color: white;"><i class="fas fa-search"></i> Ürünleri Keşfet</a>
             </div>
         </div>
     </section>
@@ -990,7 +900,7 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>Tremila.shop</h3>
-                    <p>Profesyonel 3D modeller için güvenilir kaynağınız. Yüksek kaliteli varlıklarla yaratıcı projelerinizi hayata geçirin.</p>
+                    <p>3D baskı ürünler için güvenilir kaynağınız. Özel tasarım ürünlerle hayatınızı renklendirin.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
@@ -1002,10 +912,10 @@
                 <div class="footer-column">
                     <h3>Hızlı Bağlantılar</h3>
                     <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Ana Sayfa</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Tüm Modeller</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Popüler Kategoriler</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Öne Çıkanlar</a></li>
+                        <li><a href="main.html"><i class="fas fa-chevron-right"></i> Ana Sayfa</a></li>
+                        <li><a href="modeller.html"><i class="fas fa-chevron-right"></i> Tüm Ürünler</a></li>
+                        <li><a href="kategoriler.html"><i class="fas fa-chevron-right"></i> Kategoriler</a></li>
+                        <li><a href="populer.html"><i class="fas fa-chevron-right"></i> Popüler Ürünler</a></li>
                         <li><a href="#"><i class="fas fa-chevron-right"></i> İndirimler</a></li>
                     </ul>
                 </div>
@@ -1013,8 +923,8 @@
                 <div class="footer-column">
                     <h3>Hesap</h3>
                     <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Giriş Yap</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Kayıt Ol</a></li>
+                        <li><a href="giris.html"><i class="fas fa-chevron-right"></i> Giriş Yap</a></li>
+                        <li><a href="kayit.html"><i class="fas fa-chevron-right"></i> Kayıt Ol</a></li>
                         <li><a href="#"><i class="fas fa-chevron-right"></i> Siparişlerim</a></li>
                         <li><a href="#"><i class="fas fa-chevron-right"></i> İndirim Kuponları</a></li>
                         <li><a href="#"><i class="fas fa-chevron-right"></i> Favorilerim</a></li>
@@ -1026,15 +936,15 @@
                     <ul class="footer-links">
                         <li><a href="#"><i class="fas fa-chevron-right"></i> Destek Merkezi</a></li>
                         <li><a href="#"><i class="fas fa-chevron-right"></i> Sıkça Sorulan Sorular</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> İletişim Formu</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Biz Kimiz?</a></li>
+                        <li><a href="hakkimizda.html"><i class="fas fa-chevron-right"></i> Hakkımızda</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> İletişim</a></li>
                         <li><a href="#"><i class="fas fa-chevron-right"></i> Kariyer</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 Tremila.shop. Tüm hakları saklıdır. | 3D Model Market</p>
+                <p>&copy; 2023 Tremila.shop. Tüm hakları saklıdır. | 3D Baskı Ürünler</p>
             </div>
         </div>
     </footer>
