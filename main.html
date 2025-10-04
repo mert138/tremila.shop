@@ -1,1 +1,126 @@
-
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Model Satış Sitesi</title>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #444;
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        .product {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 10px;
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+        .product model-viewer {
+            width: 100%;
+            height: 300px;
+        }
+        .product h3 {
+            margin-top: 0;
+        }
+        .product p {
+            color: #555;
+        }
+        .product button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .product button:hover {
+            background-color: #555;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>3D Model Satış Mağazası</h1>
+    </header>
+    <nav>
+        <a href="#">Ana Sayfa</a>
+        <a href="#">Ürünler</a>
+        <a href="#">Hakkımızda</a>
+        <a href="#">İletişim</a>
+    </nav>
+    <div class="container">
+        <!-- Ürün 1 -->
+        <div class="product">
+            <model-viewer 
+                src="path/to/your/model1.glb" 
+                alt="3D Model 1"
+                auto-rotate 
+                camera-controls>
+            </model-viewer>
+            <h3>3D Model 1</h3>
+            <p>Bu harika 3D modeli satın alarak projelerinizde kullanabilirsiniz.</p>
+            <p><strong>Fiyat: 100 TL</strong></p>
+            <button>Satın Al</button>
+        </div>
+        <!-- Ürün 2 -->
+        <div class="product">
+            <model-viewer 
+                src="path/to/your/model2.glb" 
+                alt="3D Model 2"
+                auto-rotate 
+                camera-controls>
+            </model-viewer>
+            <h3>3D Model 2</h3>
+            <p>Bu harika 3D modeli satın alarak projelerinizde kullanabilirsiniz.</p>
+            <p><strong>Fiyat: 150 TL</strong></p>
+            <button>Satın Al</button>
+        </div>
+        <!-- Daha fazla ürün ekleyebilirsiniz -->
+    </div>
+    <footer>
+        <p>&copy; 2023 3D Model Satış Sitesi. Tüm hakları saklıdır.</p>
+    </footer>
+</body>
+</html>
