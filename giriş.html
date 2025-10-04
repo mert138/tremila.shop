@@ -1,1 +1,350 @@
+  <!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş Yap - Tremila.shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Ana sayfadaki CSS stilini buraya kopyalayın */
+        :root {
+            --primary: #4A6CF7;
+            --primary-dark: #3A5CE5;
+            --secondary: #6C4AF7;
+            --accent: #F7A100;
+            --dark: #1D2144;
+            --light: #F7F9FC;
+            --gray: #6B7280;
+            --success: #10B981;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--dark);
+        }
+        
+        .logo-text span {
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 28px;
+            position: relative;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 16px;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-links a i {
+            margin-right: 6px;
+            font-size: 14px;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-buttons {
+            display: flex;
+            align-items: center;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+        }
+        
+        .btn i {
+            margin-right: 8px;
+        }
+        
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background: transparent;
+            margin-right: 15px;
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            border: none;
+            box-shadow: 0 4px 12px rgba(74, 108, 247, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(74, 108, 247, 0.4);
+        }
 
+        /* Login Page Styles */
+        .login-page {
+            padding: 100px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+        }
+
+        .login-container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-title {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: var(--dark);
+            text-align: center;
+        }
+
+        .login-subtitle {
+            text-align: center;
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e1e1e1;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+
+        .login-button {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .login-links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .login-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .login-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="main.html" class="logo">
+                    <div class="logo-icon">T</div>
+                    <div class="logo-text">Tremila<span>.shop</span></div>
+                </a>
+                
+                <ul class="nav-links">
+                    <li><a href="main.html"><i class="fas fa-home"></i> Ana Sayfa</a></li>
+                    <li><a href="modeller.html"><i class="fas fa-cube"></i> Modeller</a></li>
+                    <li><a href="kategoriler.html"><i class="fas fa-th-large"></i> Kategoriler</a></li>
+                    <li><a href="populer.html"><i class="fas fa-fire"></i> Popüler</a></li>
+                    <li><a href="hakkimizda.html"><i class="fas fa-info-circle"></i> Hakkımızda</a></li>
+                </ul>
+                
+                <div class="nav-buttons">
+                    <!-- Bu kısım JavaScript ile doldurulacak -->
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Login Section -->
+    <section class="login-page">
+        <div class="container">
+            <div class="login-container">
+                <h1 class="login-title">Giriş Yap</h1>
+                <p class="login-subtitle">Hesabınıza giriş yapın</p>
+                
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="email">E-posta</label>
+                        <input type="email" id="email" class="form-control" placeholder="E-posta adresiniz" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Şifre</label>
+                        <input type="password" id="password" class="form-control" placeholder="Şifreniz" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary login-button">
+                        <i class="fas fa-sign-in-alt"></i> Giriş Yap
+                    </button>
+                    
+                    <div class="login-links">
+                        <a href="sifremi-unuttum.html">Şifremi Unuttum</a>
+                        <a href="kayit.html">Hesap Oluştur</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Giriş formu işleme
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // Basit bir simülasyon: Herhangi bir girişi kabul ediyoruz
+            // Normalde burada sunucuya istek atılır
+            if(email && password) {
+                // Kullanıcı adını email'den alıyoruz (gerçek uygulamada sunucudan gelmeli)
+                const user = email.split('@')[0];
+                localStorage.setItem('user', user);
+                alert('Giriş başarılı!');
+                window.location.href = 'main.html';
+            } else {
+                alert('Lütfen tüm alanları doldurun.');
+            }
+        });
+
+        // Header'daki giriş durumunu kontrol et
+        document.addEventListener('DOMContentLoaded', function() {
+            checkLogin();
+        });
+
+        function checkLogin() {
+            const user = localStorage.getItem('user');
+            const navButtons = document.querySelector('.nav-buttons');
+            
+            if (user) {
+                navButtons.innerHTML = `
+                    <div class="user-menu">
+                        <span class="user-name">Hoş geldin, ${user}</span>
+                        <a href="#" class="btn btn-outline" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Çıkış Yap</a>
+                    </div>
+                `;
+            } else {
+                navButtons.innerHTML = `
+                    <a href="giris.html" class="btn btn-outline"><i class="fas fa-sign-in-alt"></i> Giriş Yap</a>
+                    <a href="kayit.html" class="btn btn-primary"><i class="fas fa-user-plus"></i> Kayıt Ol</a>
+                `;
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('user');
+            checkLogin();
+            window.location.href = 'main.html';
+        }
+    </script>
+</body>
+</html>
+  
