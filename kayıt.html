@@ -1,0 +1,135 @@
+  <!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kayıt Ol - Tremila.shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* giris.html'deki CSS stilini buraya kopyalayın (yukarıdaki gibi) */
+        /* Aynı stilleri kullanacağız, sadece login-container yerine register-container kullanabiliriz */
+    </style>
+</head>
+<body>
+    <!-- Header (giris.html'deki ile aynı) -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="main.html" class="logo">
+                    <div class="logo-icon">T</div>
+                    <div class="logo-text">Tremila<span>.shop</span></div>
+                </a>
+                
+                <ul class="nav-links">
+                    <li><a href="main.html"><i class="fas fa-home"></i> Ana Sayfa</a></li>
+                    <li><a href="modeller.html"><i class="fas fa-cube"></i> Modeller</a></li>
+                    <li><a href="kategoriler.html"><i class="fas fa-th-large"></i> Kategoriler</a></li>
+                    <li><a href="populer.html"><i class="fas fa-fire"></i> Popüler</a></li>
+                    <li><a href="hakkimizda.html"><i class="fas fa-info-circle"></i> Hakkımızda</a></li>
+                </ul>
+                
+                <div class="nav-buttons">
+                    <!-- Bu kısım JavaScript ile doldurulacak -->
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Register Section -->
+    <section class="login-page">
+        <div class="container">
+            <div class="login-container">
+                <h1 class="login-title">Kayıt Ol</h1>
+                <p class="login-subtitle">Yeni bir hesap oluşturun</p>
+                
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="fullName">Ad Soyad</label>
+                        <input type="text" id="fullName" class="form-control" placeholder="Adınız ve soyadınız" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">E-posta</label>
+                        <input type="email" id="email" class="form-control" placeholder="E-posta adresiniz" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Şifre</label>
+                        <input type="password" id="password" class="form-control" placeholder="Şifreniz" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirmPassword">Şifre Tekrar</label>
+                        <input type="password" id="confirmPassword" class="form-control" placeholder="Şifrenizi tekrar girin" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary login-button">
+                        <i class="fas fa-user-plus"></i> Kayıt Ol
+                    </button>
+                    
+                    <div class="login-links">
+                        <a href="giris.html">Zaten hesabınız var mı? Giriş yapın</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Kayıt formu işleme
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if(password !== confirmPassword) {
+                alert('Şifreler eşleşmiyor!');
+                return;
+            }
+            
+            if(fullName && email && password) {
+                // Basit simülasyon: Kullanıcıyı kaydedip giriş yapıyoruz
+                const user = fullName;
+                localStorage.setItem('user', user);
+                alert('Kayıt başarılı! Giriş yapılıyor...');
+                window.location.href = 'main.html';
+            } else {
+                alert('Lütfen tüm alanları doldurun.');
+            }
+        });
+
+        // Header'daki giriş durumunu kontrol et
+        document.addEventListener('DOMContentLoaded', function() {
+            checkLogin();
+        });
+
+        function checkLogin() {
+            const user = localStorage.getItem('user');
+            const navButtons = document.querySelector('.nav-buttons');
+            
+            if (user) {
+                navButtons.innerHTML = `
+                    <div class="user-menu">
+                        <span class="user-name">Hoş geldin, ${user}</span>
+                        <a href="#" class="btn btn-outline" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Çıkış Yap</a>
+                    </div>
+                `;
+            } else {
+                navButtons.innerHTML = `
+                    <a href="giris.html" class="btn btn-outline"><i class="fas fa-sign-in-alt"></i> Giriş Yap</a>
+                    <a href="kayit.html" class="btn btn-primary"><i class="fas fa-user-plus"></i> Kayıt Ol</a>
+                `;
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('user');
+            checkLogin();
+            window.location.href = 'main.html';
+        }
+    </script>
+</body>
+</html>
