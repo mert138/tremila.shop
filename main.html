@@ -3,15 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Model Market - Premium 3D Modeller</title>
+    <title>Tremila.shop | Premium 3D Modeller ve Dijital Varlıklar</title>
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #6C63FF;
-            --secondary: #4A44C6;
-            --dark: #2A2D3A;
+            --primary: #4A6CF7;
+            --primary-dark: #3A5CE5;
+            --secondary: #6C4AF7;
+            --accent: #F7A100;
+            --dark: #1D2144;
             --light: #F7F9FC;
-            --accent: #FF6584;
+            --gray: #6B7280;
+            --success: #10B981;
         }
         
         * {
@@ -25,12 +29,13 @@
             background-color: var(--light);
             color: var(--dark);
             line-height: 1.6;
+            overflow-x: hidden;
         }
         
         /* Header Styles */
         header {
             background-color: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -47,20 +52,37 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
+            padding: 18px 0;
         }
         
         .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
             display: flex;
             align-items: center;
+            text-decoration: none;
         }
         
-        .logo span {
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: 800;
             color: var(--dark);
+        }
+        
+        .logo-text span {
+            color: var(--primary);
         }
         
         .nav-links {
@@ -69,14 +91,23 @@
         }
         
         .nav-links li {
-            margin-left: 30px;
+            margin-left: 28px;
+            position: relative;
         }
         
         .nav-links a {
             text-decoration: none;
             color: var(--dark);
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 16px;
             transition: color 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-links a i {
+            margin-right: 6px;
+            font-size: 14px;
         }
         
         .nav-links a:hover {
@@ -89,13 +120,20 @@
         }
         
         .btn {
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 12px 24px;
+            border-radius: 8px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
             text-decoration: none;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+        }
+        
+        .btn i {
+            margin-right: 8px;
         }
         
         .btn-outline {
@@ -114,22 +152,52 @@
             background: var(--primary);
             color: white;
             border: none;
+            box-shadow: 0 4px 12px rgba(74, 108, 247, 0.3);
         }
         
         .btn-primary:hover {
-            background: var(--secondary);
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(74, 108, 247, 0.4);
+        }
+        
+        .btn-accent {
+            background: var(--accent);
+            color: white;
+            border: none;
+            box-shadow: 0 4px 12px rgba(247, 161, 0, 0.3);
+        }
+        
+        .btn-accent:hover {
+            background: #E69100;
+            transform: translateY(-2px);
         }
         
         /* Hero Section */
         .hero {
-            padding: 80px 0;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 100px 0 80px;
+            background: linear-gradient(135deg, #f0f4ff 0%, #e6eeff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(74, 108, 247, 0.1) 0%, rgba(74, 108, 247, 0) 70%);
+            border-radius: 50%;
         }
         
         .hero-content {
             display: flex;
             align-items: center;
             justify-content: space-between;
+            position: relative;
+            z-index: 1;
         }
         
         .hero-text {
@@ -137,116 +205,228 @@
             padding-right: 50px;
         }
         
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(74, 108, 247, 0.1);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .hero-badge i {
+            margin-right: 8px;
+        }
+        
         .hero-text h1 {
-            font-size: 48px;
+            font-size: 52px;
             margin-bottom: 20px;
             line-height: 1.2;
+            color: var(--dark);
+        }
+        
+        .hero-text h1 span {
+            color: var(--primary);
         }
         
         .hero-text p {
             font-size: 18px;
-            margin-bottom: 30px;
-            color: #555;
+            margin-bottom: 35px;
+            color: var(--gray);
+            max-width: 90%;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .hero-stats {
+            display: flex;
+            margin-top: 40px;
+            gap: 30px;
+        }
+        
+        .stat {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: var(--gray);
         }
         
         .hero-model {
             flex: 1;
-            height: 400px;
-            border-radius: 10px;
+            height: 450px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            background: white;
+            position: relative;
         }
         
         model-viewer {
             width: 100%;
             height: 100%;
-            background-color: #f0f0f0;
+            background-color: #f8faff;
         }
         
         /* Features Section */
         .features {
-            padding: 80px 0;
+            padding: 100px 0;
+            background: white;
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
         }
         
         .section-title h2 {
-            font-size: 36px;
+            font-size: 40px;
             margin-bottom: 15px;
+            color: var(--dark);
         }
         
         .section-title p {
-            color: #777;
+            color: var(--gray);
             max-width: 600px;
             margin: 0 auto;
+            font-size: 18px;
         }
         
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
         }
         
         .feature-card {
-            background: white;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            background: var(--light);
+            border-radius: 12px;
+            padding: 35px 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
             text-align: center;
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #f0f0f0;
         }
         
         .feature-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
         }
         
         .feature-icon {
-            width: 70px;
-            height: 70px;
-            background: var(--primary);
-            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
+            margin: 0 auto 25px;
             color: white;
-            font-size: 30px;
+            font-size: 32px;
+            box-shadow: 0 10px 20px rgba(74, 108, 247, 0.2);
         }
         
         .feature-card h3 {
             margin-bottom: 15px;
+            font-size: 22px;
+            color: var(--dark);
+        }
+        
+        .feature-card p {
+            color: var(--gray);
         }
         
         /* Products Section */
         .products {
-            padding: 80px 0;
-            background: #f8f9fa;
+            padding: 100px 0;
+            background: #f8faff;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        
+        .categories {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 40px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+        
+        .category-btn {
+            padding: 10px 20px;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        
+        .category-btn.active, .category-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
         }
         
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 30px;
         }
         
         .product-card {
             background: white;
-            border-radius: 10px;
+            border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
         }
         
         .product-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            z-index: 2;
         }
         
         .product-image {
-            height: 200px;
-            background: #f0f0f0;
+            height: 220px;
+            background: #f0f4ff;
+            position: relative;
+            overflow: hidden;
         }
         
         .product-info {
@@ -255,6 +435,7 @@
         
         .product-info h3 {
             margin-bottom: 10px;
+            font-size: 18px;
         }
         
         .product-meta {
@@ -266,27 +447,141 @@
         
         .price {
             font-weight: 700;
-            font-size: 18px;
+            font-size: 20px;
             color: var(--primary);
+        }
+        
+        .rating {
+            display: flex;
+            align-items: center;
+            color: var(--accent);
+            font-size: 14px;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: var(--light);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+        }
+        
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            margin-right: 15px;
+        }
+        
+        .testimonial-info h4 {
+            margin-bottom: 5px;
+        }
+        
+        .testimonial-info p {
+            color: var(--gray);
+            font-size: 14px;
+        }
+        
+        .testimonial-text {
+            color: var(--dark);
+            font-style: italic;
+            line-height: 1.7;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+            border-radius: 20px;
+            margin: 0 20px 100px;
+        }
+        
+        .cta h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .btn-light {
+            background: white;
+            color: var(--primary);
+            border: none;
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-light:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
         }
         
         /* Footer */
         footer {
             background: var(--dark);
             color: white;
-            padding: 60px 0 30px;
+            padding: 80px 0 30px;
         }
         
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 40px;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
         
         .footer-column h3 {
-            margin-bottom: 20px;
-            font-size: 18px;
+            margin-bottom: 25px;
+            font-size: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px;
         }
         
         .footer-links {
@@ -294,37 +589,77 @@
         }
         
         .footer-links li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
         
         .footer-links a {
             color: #bbb;
             text-decoration: none;
             transition: color 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-links a i {
+            margin-right: 8px;
+            font-size: 14px;
         }
         
         .footer-links a:hover {
             color: white;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
         }
         
         .copyright {
             text-align: center;
             padding-top: 30px;
-            border-top: 1px solid #444;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: #bbb;
             font-size: 14px;
         }
         
         /* Responsive */
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .hero-content {
                 flex-direction: column;
             }
             
             .hero-text {
                 padding-right: 0;
-                margin-bottom: 40px;
+                margin-bottom: 50px;
                 text-align: center;
+            }
+            
+            .hero-text p {
+                max-width: 100%;
+            }
+            
+            .hero-buttons, .hero-stats {
+                justify-content: center;
             }
             
             .nav-links {
@@ -332,8 +667,47 @@
             }
             
             .hero-text h1 {
+                font-size: 42px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-text h1 {
                 font-size: 36px;
             }
+            
+            .section-title h2 {
+                font-size: 32px;
+            }
+            
+            .cta h2 {
+                font-size: 32px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+            
+            .hero-stats {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
         }
     </style>
 </head>
@@ -342,19 +716,22 @@
     <header>
         <div class="container">
             <nav class="navbar">
-                <a href="#" class="logo">3D<span>Market</span></a>
+                <a href="#" class="logo">
+                    <div class="logo-icon">T</div>
+                    <div class="logo-text">Tremila<span>.shop</span></div>
+                </a>
                 
                 <ul class="nav-links">
-                    <li><a href="#">Ana Sayfa</a></li>
-                    <li><a href="#">Modeller</a></li>
-                    <li><a href="#">Kategoriler</a></li>
-                    <li><a href="#">Hakkımızda</a></li>
-                    <li><a href="#">İletişim</a></li>
+                    <li><a href="#"><i class="fas fa-home"></i> Ana Sayfa</a></li>
+                    <li><a href="#"><i class="fas fa-cube"></i> Modeller</a></li>
+                    <li><a href="#"><i class="fas fa-th-large"></i> Kategoriler</a></li>
+                    <li><a href="#"><i class="fas fa-fire"></i> Popüler</a></li>
+                    <li><a href="#"><i class="fas fa-info-circle"></i> Hakkımızda</a></li>
                 </ul>
                 
                 <div class="nav-buttons">
-                    <a href="#" class="btn btn-outline">Giriş Yap</a>
-                    <a href="#" class="btn btn-primary">Kayıt Ol</a>
+                    <a href="#" class="btn btn-outline"><i class="fas fa-sign-in-alt"></i> Giriş Yap</a>
+                    <a href="#" class="btn btn-primary"><i class="fas fa-user-plus"></i> Kayıt Ol</a>
                 </div>
             </nav>
         </div>
@@ -364,18 +741,42 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Premium 3D Modellerle Projelerinizi Geliştirin</h1>
-                    <p>Profesyonel tasarımcılar tarafından hazırlanmış yüksek kaliteli 3D modelleri keşfedin. Oyunlarınız, animasyonlarınız ve tasarımlarınız için mükemmel varlıklar.</p>
-                    <a href="#" class="btn btn-primary">Hemen Keşfet</a>
+                <div class="hero-text fade-in">
+                    <div class="hero-badge">
+                        <i class="fas fa-rocket"></i> 3000+ Premium 3D Model
+                    </div>
+                    <h1>Dijital Projeleriniz İçin <span>Premium 3D Modeller</span></h1>
+                    <p>Tremila.shop'ta oyun geliştiricileri, tasarımcılar ve sanatçılar için özenle hazırlanmış yüksek kaliteli 3D modelleri keşfedin. Hızlı indirme ve kolay entegrasyon.</p>
+                    
+                    <div class="hero-buttons">
+                        <a href="#" class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Hemen Keşfet</a>
+                        <a href="#" class="btn btn-outline"><i class="fas fa-play-circle"></i> Tanıtım Videosu</a>
+                    </div>
+                    
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <div class="stat-value">3.000+</div>
+                            <div class="stat-label">Premium Model</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">15K+</div>
+                            <div class="stat-label">Mutlu Müşteri</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">4.9/5</div>
+                            <div class="stat-label">Kullanıcı Puanı</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="hero-model">
+                <div class="hero-model fade-in">
                     <model-viewer 
                         src="https://modelviewer.dev/shared-assets/models/Astronaut.glb" 
                         alt="3D Astronot modeli"
                         auto-rotate 
                         camera-controls
-                        shadow-intensity="1">
+                        shadow-intensity="1"
+                        ar
+                        ar-modes="webxr scene-viewer quick-look">
                     </model-viewer>
                 </div>
             </div>
@@ -385,34 +786,42 @@
     <!-- Features Section -->
     <section class="features">
         <div class="container">
-            <div class="section-title">
-                <h2>Neden Bizimle Çalışmalısınız?</h2>
-                <p>3D Model Market olarak size en iyi hizmeti sunmak için buradayız</p>
+            <div class="section-title fade-in">
+                <h2>Tremila.shop Avantajları</h2>
+                <p>Neden binlerce tasarımcı ve geliştirici Tremila.shop'u tercih ediyor?</p>
             </div>
             
             <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">✓</div>
-                    <h3>Yüksek Kalite</h3>
-                    <p>Tüm modellerimiz profesyonel tasarımcılar tarafından optimize edilmiştir.</p>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>Premium Kalite</h3>
+                    <p>Tüm modellerimiz profesyonel tasarımcılar tarafından optimize edilmiş, yüksek poligon sayılı ve detaylıdır.</p>
                 </div>
                 
-                <div class="feature-card">
-                    <div class="feature-icon">🔄</div>
-                    <h3>Kolay İndirme</h3>
-                    <p>Satın alma işleminden sonra modellere anında erişim sağlayın.</p>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Hızlı İndirme</h3>
+                    <p>Satın alma işleminden sonra modellere anında erişim sağlayın. Hızlı sunucularımız ile bekleme yok.</p>
                 </div>
                 
-                <div class="feature-card">
-                    <div class="feature-icon">🎨</div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
                     <h3>Çok Formatlı</h3>
-                    <p>Modeller farklı yazılımlarla uyumlu çeşitli formatlarda sunulur.</p>
+                    <p>Modeller farklı yazılımlarla uyumlu çeşitli formatlarda sunulur (FBX, OBJ, BLEND, ve daha fazlası).</p>
                 </div>
                 
-                <div class="feature-card">
-                    <div class="feature-icon">📞</div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
                     <h3>7/24 Destek</h3>
-                    <p>İhtiyacınız olduğunda biz buradayız. Sorularınızı yanıtlamaktan mutluluk duyarız.</p>
+                    <p>İhtiyacınız olduğunda biz buradayız. Uzman ekibimiz sorularınızı yanıtlamaktan mutluluk duyar.</p>
                 </div>
             </div>
         </div>
@@ -421,13 +830,27 @@
     <!-- Products Section -->
     <section class="products">
         <div class="container">
-            <div class="section-title">
-                <h2>Popüler 3D Modeller</h2>
-                <p>En çok satan ve en beğenilen modellerimizi keşfedin</p>
+            <div class="section-header fade-in">
+                <div class="section-title" style="text-align: left; margin-bottom: 0;">
+                    <h2>Popüler 3D Modeller</h2>
+                    <p>En çok satan ve en beğenilen modellerimizi keşfedin</p>
+                </div>
+                <a href="#" class="btn btn-outline">Tümünü Gör <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="categories fade-in">
+                <button class="category-btn active">Tümü</button>
+                <button class="category-btn">Karakterler</button>
+                <button class="category-btn">Araçlar</button>
+                <button class="category-btn">Mimari</button>
+                <button class="category-btn">Eşyalar</button>
+                <button class="category-btn">Doğa</button>
+                <button class="category-btn">Teknoloji</button>
             </div>
             
             <div class="products-grid">
-                <div class="product-card">
+                <div class="product-card fade-in">
+                    <div class="product-badge">Popüler</div>
                     <div class="product-image">
                         <model-viewer 
                             src="https://modelviewer.dev/shared-assets/models/NeilArmstrong.glb" 
@@ -439,16 +862,19 @@
                         </model-viewer>
                     </div>
                     <div class="product-info">
-                        <h3>Astronot Karakter</h3>
+                        <h3>Premium Astronot Karakter</h3>
                         <p>Detaylı astronot karakter modeli, oyun ve animasyon projeleri için ideal.</p>
                         <div class="product-meta">
-                            <span class="price">₺149.99</span>
-                            <a href="#" class="btn btn-primary">Sepete Ekle</a>
+                            <div class="price">₺149.99</div>
+                            <div class="rating">
+                                <i class="fas fa-star"></i> 4.9
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="product-card">
+                <div class="product-card fade-in">
+                    <div class="product-badge">Yeni</div>
                     <div class="product-image">
                         <model-viewer 
                             src="https://modelviewer.dev/shared-assets/models/RobotExpressive.glb" 
@@ -459,16 +885,18 @@
                         </model-viewer>
                     </div>
                     <div class="product-info">
-                        <h3>Ekspresif Robot</h3>
+                        <h3>Ekspresif Robot Modeli</h3>
                         <p>Animasyonlu robot modeli, yüz ifadeleri ve hareket kontrolleri ile birlikte.</p>
                         <div class="product-meta">
-                            <span class="price">₺199.99</span>
-                            <a href="#" class="btn btn-primary">Sepete Ekle</a>
+                            <div class="price">₺199.99</div>
+                            <div class="rating">
+                                <i class="fas fa-star"></i> 4.8
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="product-card">
+                <div class="product-card fade-in">
                     <div class="product-image">
                         <model-viewer 
                             src="https://modelviewer.dev/shared-assets/models/SheenChair.glb" 
@@ -479,34 +907,79 @@
                         </model-viewer>
                     </div>
                     <div class="product-info">
-                        <h3>Modern Sandalye</h3>
+                        <h3>Modern Sandalye Koleksiyonu</h3>
                         <p>Mimari görselleştirmeler için yüksek detaylı modern sandalye modeli.</p>
                         <div class="product-meta">
-                            <span class="price">₺79.99</span>
-                            <a href="#" class="btn btn-primary">Sepete Ekle</a>
+                            <div class="price">₺79.99</div>
+                            <div class="rating">
+                                <i class="fas fa-star"></i> 4.7
+                            </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Müşterilerimiz Ne Diyor?</h2>
+                <p>Tremila.shop'tan alışveriş yapan binlerce mutlu müşteriye katılın</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">A</div>
+                        <div class="testimonial-info">
+                            <h4>Ahmet Yılmaz</h4>
+                            <p>Oyun Geliştirici</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        "Tremila.shop'tan aldığım karakter modelleri ile oyunumun geliştirme süreci çok hızlandı. Kalite ve fiyat dengesi mükemmel!"
                     </div>
                 </div>
                 
-                <div class="product-card">
-                    <div class="product-image">
-                        <model-viewer 
-                            src="https://modelviewer.dev/shared-assets/models/Fox.glb" 
-                            alt="Tilki modeli"
-                            auto-rotate 
-                            camera-controls
-                            shadow-intensity="1">
-                        </model-viewer>
-                    </div>
-                    <div class="product-info">
-                        <h3>Animasyonlu Tilki</h3>
-                        <p>Tamamen riglenmiş ve animasyonlu tilki karakteri, doğa temalı projeler için.</p>
-                        <div class="product-meta">
-                            <span class="price">₺249.99</span>
-                            <a href="#" class="btn btn-primary">Sepete Ekle</a>
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">E</div>
+                        <div class="testimonial-info">
+                            <h4>Elif Demir</h4>
+                            <p>3D Sanatçı</p>
                         </div>
                     </div>
+                    <div class="testimonial-text">
+                        "Mimari projelerim için ihtiyaç duyduğum tüm modelleri bulabildiğim tek platform. Kalite ve çeşitlilik açısından rakipsiz."
+                    </div>
                 </div>
+                
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">M</div>
+                        <div class="testimonial-info">
+                            <h4>Mehmet Kaya</h4>
+                            <p>Animasyon Stüdyosu</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        "Profesyonel animasyon projelerimiz için sürekli Tremila.shop'tan alışveriş yapıyoruz. Müşteri desteği ve ürün kalitesi harika."
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta fade-in">
+        <div class="container">
+            <h2>3D Model Dünyasına Katılın</h2>
+            <p>Binlerce premium 3D model, texture ve materyale erişim sağlayın. Profesyonel projeleriniz için ihtiyacınız olan her şey Tremila.shop'ta!</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-light"><i class="fas fa-crown"></i> Premium Üye Ol</a>
+                <a href="#" class="btn btn-outline" style="color: white; border-color: white;"><i class="fas fa-search"></i> Modelleri Keşfet</a>
             </div>
         </div>
     </section>
@@ -516,45 +989,92 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>3D Market</h3>
+                    <h3>Tremila.shop</h3>
                     <p>Profesyonel 3D modeller için güvenilir kaynağınız. Yüksek kaliteli varlıklarla yaratıcı projelerinizi hayata geçirin.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
                 
                 <div class="footer-column">
                     <h3>Hızlı Bağlantılar</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Ana Sayfa</a></li>
-                        <li><a href="#">Tüm Modeller</a></li>
-                        <li><a href="#">Popüler Kategoriler</a></li>
-                        <li><a href="#">Öne Çıkanlar</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Ana Sayfa</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Tüm Modeller</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Popüler Kategoriler</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Öne Çıkanlar</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> İndirimler</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h3>Hesap</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Giriş Yap</a></li>
-                        <li><a href="#">Kayıt Ol</a></li>
-                        <li><a href="#">Siparişlerim</a></li>
-                        <li><a href="#">İndirim Kuponları</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Giriş Yap</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Kayıt Ol</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Siparişlerim</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> İndirim Kuponları</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Favorilerim</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h3>İletişim</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Destek</a></li>
-                        <li><a href="#">SSS</a></li>
-                        <li><a href="#">İletişim Formu</a></li>
-                        <li><a href="#">Biz Kimiz?</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Destek Merkezi</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Sıkça Sorulan Sorular</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> İletişim Formu</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Biz Kimiz?</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Kariyer</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 3D Market. Tüm hakları saklıdır.</p>
+                <p>&copy; 2023 Tremila.shop. Tüm hakları saklıdır. | 3D Model Market</p>
             </div>
         </div>
     </footer>
+
+    <script>
+        // Fade-in animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeInOnScroll = function() {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.style.opacity = "1";
+                        element.style.transform = "translateY(0)";
+                    }
+                });
+            };
+            
+            // Set initial state
+            fadeElements.forEach(element => {
+                element.style.opacity = "0";
+                element.style.transform = "translateY(20px)";
+                element.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+            });
+            
+            window.addEventListener('scroll', fadeInOnScroll);
+            fadeInOnScroll(); // Check on load
+            
+            // Category buttons
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
